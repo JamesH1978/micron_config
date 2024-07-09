@@ -24,6 +24,8 @@ cors_domains =
 
 [history]
 
+[timelapse]
+
 [update_manager]
 channel = dev
 refresh_interval = 168
@@ -109,4 +111,11 @@ is_system_service = False
 managed_services = klipper
 info_tags = 
 	desc=Cartographer Probe
+
+[update_manager timelapse]
+type = git_repo
+primary_branch = main
+path = ~/moonraker-timelapse
+origin = https://github.com/mainsail-crew/moonraker-timelapse.git
+managed_services = klipper moonraker
 
