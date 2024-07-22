@@ -26,6 +26,23 @@ cors_domains =
 
 [timelapse]
 
+[mqtt]
+address = 192.168.1.207
+port = 1883
+mqtt_protocol = v5
+username = mqtt
+password = T1gercub
+enable_moonraker_api = True
+instance_name = Micron
+status_objects = 
+	webhooks
+	toolhead=position,print_time,homed_axes
+	extruder=temperature
+	heater_bed=temperature
+	temperature_sensor=tmc2209 stepper_x
+	print_stats
+publish_split_status = True
+
 [update_manager]
 channel = dev
 refresh_interval = 168
