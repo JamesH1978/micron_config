@@ -26,6 +26,19 @@ cors_domains =
 
 [timelapse]
 
+[analysis]
+platform = rpi
+auto_dump_default_config = true
+estimator_timeout = 600
+enable_auto_analysis = true
+enable_estimator_updates = true
+
+[wled shed]
+type = http
+address = 192.168.1.226
+initial_preset = 1
+chain_count = 47
+
 [mqtt]
 address = 192.168.1.207
 port = 1883
@@ -132,4 +145,26 @@ primary_branch = main
 path = ~/moonraker-timelapse
 origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 managed_services = klipper moonraker
+
+[notifier print_start]
+url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
+events = started
+body = EnderBender started printing '{event_args[1].filename}'
+
+[notifier print_complete]
+url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
+events = complete
+body = PartsBitch completed printing '{event_args[1].filename}'
+attach = http://192.168.1.216/webcam/?action=snapshot
+
+[notifier print_error]
+url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
+events = error
+body = PartsBitch experienced an error: '{event_args[1].message}'
+attach = http://192.168.1.216/webcam/?action=snapshot
+
+[notifier pushover]
+url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
+events = gcode
+body = {event_message}
 
