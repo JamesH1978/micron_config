@@ -36,7 +36,7 @@ enable_estimator_updates = true
 [wled shed]
 type = http
 address = 192.168.1.226
-initial_preset = 1
+initial_preset = 2
 chain_count = 47
 
 [mqtt]
@@ -96,16 +96,6 @@ managed_services = klipper
 primary_branch = main
 install_script = install.sh
 
-[update_manager Klippain-ShakeTune]
-type = git_repo
-origin = https://github.com/Frix-x/klippain-shaketune.git
-path = ~/klippain_shaketune
-virtualenv = ~/klippain_shaketune-env
-requirements = requirements.txt
-system_dependencies = system-dependencies.json
-primary_branch = main
-managed_services = klipper
-
 [update_manager Klipper-Adaptive-Meshing-Purging]
 type = git_repo
 channel = dev
@@ -146,10 +136,20 @@ path = ~/moonraker-timelapse
 origin = https://github.com/mainsail-crew/moonraker-timelapse.git
 managed_services = klipper moonraker
 
+[update_manager Klippain-ShakeTune]
+type = git_repo
+origin = https://github.com/Frix-x/klippain-shaketune.git
+path = ~/klippain_shaketune
+virtualenv = ~/klippy-env
+requirements = requirements.txt
+system_dependencies = system-dependencies.json
+primary_branch = main
+managed_services = klipper
+
 [notifier print_start]
 url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
 events = started
-body = EnderBender started printing '{event_args[1].filename}'
+body = PartsBitch started printing '{event_args[1].filename}'
 
 [notifier print_complete]
 url = pover://uZB6FeAk5TMeQzg24vPi6pd59oeNh6@ai68hwjrqvzq7bqhpdkni8kk8kiyrp
